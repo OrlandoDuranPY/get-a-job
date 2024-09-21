@@ -1,16 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CurriculaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VacancyController;
 use App\Livewire\Counter;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::get('/counter', Counter::class);
 
 Route::middleware([
     'auth:sanctum',
@@ -22,3 +18,26 @@ Route::middleware([
     })->name('dashboard');
 });
 
+/* ========================================
+   = Auth =
+========================================= */
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+
+/* ========================================
+   = Sitio Publico =
+========================================= */
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+/* ========================================
+   = Vacantes =
+========================================= */
+Route::get('/vacancies', [VacancyController::class, 'index'])->name('vacancies.index');
+
+/* ========================================
+   = Curriculums =
+========================================= */
+Route::get('/curricula', [CurriculaController::class, 'index'])->name('curricula.index');
+
+/* ========================================
+   = Dashboard =
+========================================= */

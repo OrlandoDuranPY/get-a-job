@@ -7,6 +7,8 @@
 
     <title>JobSphere | @yield('title')</title>
 
+    <link rel="icon" href="{{asset('logo.svg')}}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +20,9 @@
 
 <body class="min-h-screen flex flex-col">
     {{-- Componente header --}}
-    <x-layouts.header />
+    @unless (Route::is('login') || Route::is('register'))
+        <x-layouts.header />
+    @endunless
 
     {{-- Contenido --}}
     <main class="flex-1 flex items-center justify-center">
